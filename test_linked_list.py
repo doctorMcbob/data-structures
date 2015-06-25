@@ -14,7 +14,7 @@ def test_constructor():
 def test_insert():
     ll = LinkedList()
     ll.insert(5)
-    assert ll.ll[1] == 5
+    assert ll.ll[0] == 5
 
         
 def test_pop():
@@ -27,7 +27,7 @@ def test_size():
 
 def test_search():
     LL = LinkedList(("dog", 3, "fish taco", object(), "house"))
-    assert LL.search(2) == 3
+    assert LL.search(1) == 3
     assert LL.search(10) == None
     
 def test_remove():
