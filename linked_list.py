@@ -2,14 +2,14 @@ class LinkedList(object):
     def __init__(self, iterable=()): #LinkedList((1, 2, 3)) --> (1, 2, 3)
         self.ll = {}
         for node in iterable:
-            self.ll[len(self.ll)+1] = node
+            self.ll[len(self.ll)] = node
     
     def insert(self, val): #basically append
-        self.ll[len(self.ll)+1]=val
+        self.ll[len(self.ll)]=val
         
     def pop(self): #remove and return end of list
-        node = self.ll[len(self.ll)]
-        del self.ll[len(self.ll)]
+        node = self.ll[len(self.ll)-1]
+        del self.ll[len(self.ll)-1]
         return node
         
     def size(self): #return length of list
@@ -20,17 +20,17 @@ class LinkedList(object):
         try:
             node = self.ll[val]
             i=val
-            while i < len(self.ll):
+            while i < len(self.ll)-1:
                 self.ll[i] = self.ll[i+1]
                 i+=1
-            del self.ll[len(self.ll)]
+            del self.ll[len(self.ll)-1]
             return node
         except KeyError:
             return None
 
     def remove(self, node): #remove node without index
         i=1
-        while i < len(self.ll):
+        while i < len(self.ll)-1:
             if self.ll[i] == node:
                 self.search(i)
                 break
@@ -38,7 +38,7 @@ class LinkedList(object):
         
     def display(self): #return tuple literal of list items
         t, i = (), 1
-        while i < len(self.ll)+1:
+        while i < len(self.ll):
             t = t[:i]+(self.ll[i], )+t[i:]
             print t
             raw_input
