@@ -37,8 +37,10 @@ class LinkedList(object):
             i+=1
         
     def display(self): #return tuple literal of list items
-        t, i = ("",)*len(self.ll), 1
-        while i < len(self.ll):
-            t = t[:i-1]+(self.ll[i], )+t[i+1:]
+        t, i = (), 1
+        while i < len(self.ll)+1:
+            t = t[:i]+(self.ll[i], )+t[i:]
+            print t
+            raw_input
             i+=1
         return t
