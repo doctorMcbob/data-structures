@@ -1,16 +1,16 @@
 # data-structures
 For the linked list codefellows Python DA assignment: https://canvas.instructure.com/courses/935915/assignments/3534229
 
-Linked List:
-       Constructor: LinkedList((a, b, c))--> [a b c]
-       insert: appends node to end of list
-       pop: remove and return end of list
-       size: returns length of list
-       search: return and remove node
-       remove: removes node based on index
-       display: returns list as tuple       
+<br>Linked List:
+<br>       Constructor: LinkedList((a, b, c))--> [a b c]
+<br>       insert: appends node to end of list
+<br>       pop: remove and return end of list
+<br>       size: returns length of list
+<br>       search: return and remove node
+<br>       remove: removes node based on index
+<br>       display: returns list as tuple       
 
-Contributors:
-	https://github.com/doctormcbob
-	https://github.com/HeyIamJames
+<br>Contributors:
+<br>	https://github.com/doctormcbob
+<br>	https://github.com/HeyIamJames
 
