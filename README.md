@@ -1,16 +1,1 @@
-# data-structures
-For the linked list codefellows Python DA assignment: https://canvas.instructure.com/courses/935915/assignments/3534229
-
-<br>Linked List:
-<br>       Constructor: LinkedList((a, b, c))--> [a b c]
-<br>       insert: appends node to end of list
-<br>       pop: remove and return end of list
-<br>       size: returns length of list
-<br>       search: return and remove node
-<br>       remove: removes node based on index
-<br>       display: returns list as tuple       
-
-<br>Contributors:
-<br>	https://github.com/doctormcbob
-<br>	https://github.com/HeyIamJames
-
+Parenthetics iterates through a string and increments or decriments a counter based each time there is a parenthesis. If it is an open parenthesis the counter is incremented. A closed parenthesis will decriment the counter. The functoin then checks the counter to see if there are more open, closed or equal parenthesis. The function also adds closed and open strings to a list which checks to see if the first value entered is a closed parenthesis meaning the string is invalid.

@@ -14,3 +14,7 @@ def test_cloed():
 def test_balanced():
     text = "()"
     assert balanced(text) == 0
+
+def test_order():
+    text = ")()()()"
+    assert balanced(text) == "You have started with a closed parentheses. Invalid."
