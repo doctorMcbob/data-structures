@@ -1,5 +1,5 @@
 from doubly_linked_list import DoubleLinkedList
-import pytest 
+import pytest
 
 def test_constructor():
     items=("duck", 3, [2, 3, 4], object())
@@ -16,7 +16,7 @@ def test_insert():
     dll.insert(5)
     assert dll.pop() == 5
 
-        
+
 def test_pop():
     dll = DoubleLinkedList(("dog", 3, "fish taco", object(), "house"))
     assert  "dog" == dll.pop()
