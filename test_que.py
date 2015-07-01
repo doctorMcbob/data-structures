@@ -1,5 +1,6 @@
 # enqueue(value): adds value to the queue
-# dequeue(): removes the correct item from the queue and returns its value (should raise an error if the queue is empty)
+# dequeue(): removes the correct item from the queue and returns its value
+# (should raise an error if the queue is empty)
 # size(): return the size of the queue.  Should return 0 if the queue is empty.
 
 import pytest
@@ -26,4 +27,4 @@ def test_size():
     q = Queue()
     for n in que:
         q.enqueue(n)
-        assert q.size() == n   
+        assert q.size() == n
