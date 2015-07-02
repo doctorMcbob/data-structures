@@ -20,16 +20,21 @@ class BinaryHeap:
         i = 1
         while True:
             try:
-                if self.heapList[i * 2] > self.heapList[(i * 2) + 1]:
-                    self.heapList[i], self.heapList[(i * 2) + 1] = self.heapList[(i * 2) + 1], self.heapList[i]
-                    i = (i * 2) + 1
-                elif self.heapList[i * 2] < self.heapList[(i * 2) + 1]:
-                    self.heapList[i], self.heapList[i * 2] = self.heapList[i*2], self.heapList[i]
+                lchild, rchild = i*2,(i*2)+1
+                #if left child is more then parent --and-- left child is more then or equal to right child
+                if self.heapList[lchild] < self.heapList[i] and self.heapList[lchild] <= self.heapList[rchild]:
+                    self.heapList[i], self.heapList[lchild] = self.heapList[lchild], self.heapList[i]
                     i = i * 2
+                #if right child is more then parent --and-- right child is more then to left child
+                elif self.heapList[rchild] < self.heapList[i] and self.heapList[rchild] < self.heapList[lchild]:
+                    self.heapList[i], self.heapList[lchild] = self.heapList[lchild], self.heapList[i]
+                    i = (i * 2) + 1
+                #neither are more then parent
                 else:
                     break
             except IndexError:
                 break
+            
 
     def push(self, k):
         """puts number k on the data tree and then restructures"""
