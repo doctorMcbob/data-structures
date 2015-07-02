@@ -4,26 +4,34 @@ class Node(object):
         self.nextNode = pointer
         self.priority = priority
 
-        
+
 class PriorityQueue(object):
     def __init__(self):
         self._size = 0
         self.first = None
-        self.last = None
-
-    def restructure(self):
+        
+    def restructure(self, node):
         """
         restructure method: 
           moves the node down the list untill it outranks
           it's nextNode. 
         """
-        if self.first.priority >= self.first.nextNode.priority:
-            node = self.first
-            while node.nextNode.priority >= node.priority:
+        prev_node = None
+        while True:
+            if node.nextNode.priority >= node.priority:
                 prev_node = node.nextNode
                 node.nextNode = node.nextNode.nextNode
-            prev_node.nextNode = node
-        
+                if node.nextNode is None:
+                    prev_node.nextNode = node 
+                    break
+            elif prev_node is None:
+                self.first = node 
+                break
+            else:
+                prev_node.nextNode = node 
+                break
+
+            
     def insert(self, val, priority=0):
         """
         insert method:
@@ -31,12 +39,10 @@ class PriorityQueue(object):
           and then calls the restructure method
           which makes sure the node is in the right spot
         """
-        if self._size == 0:
-            self.first = Node(val, None)
-            self.last = self.first
+        if self.first is None:
+            self.first = Node(val, None, priority)
         else:
-            self.first, self.first.nextNode = Node(val, None. priority), self.first
-            self.restructure()
+            self.restructure(Node(val, self.first, priority))
         self._size += 1
         
         
@@ -46,7 +52,10 @@ class PriorityQueue(object):
            removes the value at the head of the list and returns it
         """
         node = self.first
-        self.first = self.first.nextNode
+        if self.first.nextNode is not None:
+            self.first = self.first.nextNode
+        else:
+            self.first = None
         self._size -= 1
         return node.value
 
@@ -54,4 +63,4 @@ class PriorityQueue(object):
         return self._size
 
     def peek(self):
-        return self.first
+        return self.first.value
