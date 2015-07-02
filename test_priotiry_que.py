@@ -2,7 +2,6 @@ from priority_que import PriorityQueue
 import pytest
 
 
-#@pytest.fixture
 def makeapq():
     pq = PriorityQueue()
     pq.insert("duck", 2)
@@ -22,3 +21,8 @@ def test_pop():
     pq = makeapq()
     assert ["fish", "money", "duck", 4, 3] == [pq.pop() for x in range(5)]
     
+def test_peek():
+    pq = makeapq()
+    assert pq.peek() == "fish"
+    pq.pop()
+    assert pq.peek() == "money"
