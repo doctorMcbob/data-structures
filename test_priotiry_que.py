@@ -1,5 +1,4 @@
 from priority_que import PriorityQueue
-import pytest
 
 
 def makeapq():
@@ -15,12 +14,13 @@ def makeapq():
 def test_insert():
     pq = makeapq()
     assert pq.first.value == "fish"
-    
+
 
 def test_pop():
     pq = makeapq()
     assert ["fish", "money", "duck", 4, 3] == [pq.pop() for x in range(5)]
-    
+
+
 def test_peek():
     pq = makeapq()
     assert pq.peek() == "fish"
