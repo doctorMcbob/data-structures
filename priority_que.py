@@ -9,12 +9,12 @@ class PriorityQueue(object):
     def __init__(self):
         self._size = 0
         self.first = None
-        
+
     def restructure(self, node):
         """
-        restructure method: 
+        restructure method:
           moves the node down the list untill it outranks
-          it's nextNode. 
+          it's nextNode.
         """
         prev_node = None
         while True:
@@ -22,16 +22,15 @@ class PriorityQueue(object):
                 prev_node = node.nextNode
                 node.nextNode = node.nextNode.nextNode
                 if node.nextNode is None:
-                    prev_node.nextNode = node 
+                    prev_node.nextNode = node
                     break
             elif prev_node is None:
-                self.first = node 
+                self.first = node
                 break
             else:
-                prev_node.nextNode = node 
+                prev_node.nextNode = node
                 break
 
-            
     def insert(self, val, priority=0):
         """
         insert method:
@@ -44,8 +43,7 @@ class PriorityQueue(object):
         else:
             self.restructure(Node(val, self.first, priority))
         self._size += 1
-        
-        
+
     def pop(self):
         """
         pop method:
