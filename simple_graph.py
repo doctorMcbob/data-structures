@@ -1,14 +1,18 @@
 class Node(object):
     """Node class. has a value and a list of pointers"""
-    def __init__(self, val, pointers=None):
+    def __init__(self, val=None, iterable=[]):
         self.value = val
         self.pointers = []
+        for pointer in iterable:
+            self.pointers.append(pointer)
 
 
 class SimpleGraph(object):
     """Graph data structure"""
-    def __init__(self, nodes=[]):
-        self._nodes = nodes
+    def __init__(self, iterable=[]):
+        self._nodes = []
+        for node in iterable:
+            self.add_node(node)
 
     def nodes(self):
         """Returns a list of nodes"""
@@ -21,6 +25,7 @@ class SimpleGraph(object):
         for n in self.nodes():
             for n2 in n.pointers:
                 l.append((n, n2))
+        return l
 
     def add_node(self, n):
         """Puts a node into the graph"""
@@ -33,18 +38,23 @@ class SimpleGraph(object):
             self.add_node(n1)
         if n2 not in self.nodes():
             self.add_node(n2)
-        n1.pointers.append(n2)
+        if n2 not in n1.pointers:
+            n1.pointers.append(n2)
 
     def del_node(self, n):
         """Removes node from the graph"""
+        if not self.has_node(n):
+            raise ValueError("Node is not in the graph")
         for node in self.nodes():
             if self.adjacent(node, n):
-                node.pointers.remove(n)
+                self.del_edge(node, n)
         self._nodes.remove(n)
 
     def del_edge(self, n1, n2):
         """Removes edge from graph
         removes pointer to n2 from n1"""
+        if not (self.has_node(n1) and self.has_node(n2)):
+            raise ValueError("Node is not in the graph")
         n1.pointers.remove(n2)
 
     def has_node(self, n):
@@ -55,9 +65,13 @@ class SimpleGraph(object):
     def neighbors(self, n):
         """Returns a list of all the nodes connected
         to n by edges. Error if n is not in the graph"""
+        if not self.has_node(n):
+            raise ValueError("Node is not in the graph")
         return n.pointers
 
     def adjacent(self, n1, n2):
         """Returns True if n1 and n2 have an edge.
         Error if either are not in the graph"""
+        if not (self.has_node(n1) and self.has_node(n2)):
+            raise ValueError("Node is not in the graph")
         return n2 in n1.pointers
