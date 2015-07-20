@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from __future__ import print_function
-#major help from http://www.ics.uci.edu/~eppstein/161/python/dijkstra.py
+# major help from http://www.ics.uci.edu/~eppstein/161/python/dijkstra.py
 
 
 class Graph(object):
@@ -38,9 +38,9 @@ class Graph(object):
         """
         Creats an edge between two nodes with a weight.
         """
-        if not self.graph.has_key(node1):
+        if node1 not in self.graph:
             self.add_node(node1)
-        if not self.graph.has_key(node2):
+        if node2 not in self.graph:
             self.add_node(node2)
         self.graph[node1].append((node2, weight))
 
@@ -74,7 +74,7 @@ class Graph(object):
         """
         Check is node is in graph.
         """
-        return self.graph.has_key(node)
+        return node in self.graph
 
     def neighbors(self, node):
         """
@@ -85,7 +85,6 @@ class Graph(object):
         else:
             raise KeyError('Node not in graph.')
 
-
     def adjacent(self, node1, node2):
         """
         Finds an edge between two nodees
@@ -93,7 +92,6 @@ class Graph(object):
         if node1 not in self.graph or node2 not in self.graph:
             raise IndexError('Node does not exist')
         return node2 in self.graph[node1]
-
 
     def dijkstra(self, start, end):
         """
