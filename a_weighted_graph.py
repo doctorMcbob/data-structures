@@ -93,6 +93,32 @@ class Graph(object):
             raise IndexError('Node does not exist')
         return node2 in self.graph[node1]
 
+    def depth_first_traversal(self, start):
+        """Returns a depth first traversal path as a list.
+        """
+        visited = []
+        begin = [start]
+
+        while begin:
+            node = begin.pop(0)
+            if node not in visited:
+                visited.append(node)
+                begin = self.neighbors(node) + begin
+        return visited
+
+    def breadth_first_traversal(self, start):
+        """Returns a breadth first travesal path as a list.
+        """
+        visited = []
+        begin = [start]
+
+        while begin:
+            node = begin.pop(0)
+            if node not in visited:
+                visited.append(node)
+                begin = begin + self.neighbors(node)
+        return visited
+
     def dijkstra(self, start, end):
         """
         Returns shortes path from start to end
