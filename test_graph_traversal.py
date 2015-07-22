@@ -1,6 +1,7 @@
 from graph_traversal import SimpleGraph, Node
 import pytest
 
+
 @pytest.fixture
 def gimme_a_graph():
     nodes = [Node(5), Node("Bananas"),
