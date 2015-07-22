@@ -1,4 +1,4 @@
-from graph_traversal import SimpleGraph, Node
+from graphtraversal import SimpleGraph, Node
 import pytest
 
 
