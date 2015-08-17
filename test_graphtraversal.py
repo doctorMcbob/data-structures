@@ -38,3 +38,22 @@ def test_breadth_first(gimme_a_graph):
     assert l[0] == g.nodes()[0]
     assert l[1] == g.nodes()[1]
     assert l[2] == g.nodes()[2]
+
+
+def test_add(gimme_a_graph):
+    g = gimme_a_graph
+    n = Node("Nope")
+    g.add_node(n)
+    g.add_edge(g.nodes()[3], n)
+    l = g.depth_first_traversal(g.nodes()[0])
+    assert n in l
+
+
+def test_del(gimme_a_graph):
+    g = gimme_a_graph
+    n = Node("Nope")
+    g.add_node(n)
+    g.add_edge(g.nodes()[3], n)
+    g.del_edge(g.nodes()[3], n)
+    l = g.depth_first_traversal(g.nodes()[0])
+    assert n not in l
