@@ -1,6 +1,6 @@
-
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 
 class Node(object):
     """Node class. has a value and a list of pointers"""
