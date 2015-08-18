@@ -131,3 +131,50 @@ class WeightedGraph(object):
             edges = node.get_edges()
             for edge in edges:
                 paths.append((path[0] + [edge], path[1] + edge.weight))
+
+    def dijkstra(self, start, dest):
+        distance = {start: 0}
+        previous = {start: None}
+        not_visited = set()
+        edges = {}
+
+        for n1, n2, weight in self.edges():
+            if n1 not in edges:
+                edges[n1] = []
+            edges[n1].append((n2, weight))
+
+        for node in self.nodes():
+            if node is not start:
+                distance[node] = float("inf")
+                previous[node] = None
+            not_visited.add(node)
+
+        while len(not_visited) > 0:
+            first = min(not_visited, key=distance.get)
+            not_visited.discard(first)
+
+            for end, weight in edges[first]:
+                if distance[first] + weight < distance[end]:
+                    distance[end] = distance[first] + weight
+                    previous[end] = first
+
+        path = []
+        curr = dest
+        while previous[curr] is not None:
+            path.append(curr)
+            curr = previous[curr]
+        path.append(start)
+        return path[::-1]
+
+
+if __name__ == '__main__':
+    from random import randint
+    nodes = [Node(x) for x in range(10)]
+    edges = [(x, y, randint(0, 20)) for x in range(10) for y in range(10)]
+    g = WeightedGraph()
+    for n in nodes:
+        g.add_node(n)
+    for n1, n2, w in edges:
+        g.add_edge(nodes[n1], nodes[n2], w)
+
+    print g.dijkstra(nodes[2], nodes[6])
