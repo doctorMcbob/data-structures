@@ -166,6 +166,29 @@ class WeightedGraph(object):
         path.append(start)
         return path[::-1]
 
+    def bellamford(self, start, dest):
+        nodes = self.nodes()
+        distance = {start: 0}
+        previous = {}
+
+        for n in nodes:
+            if n is not start:
+                distance[n] = float("inf")
+
+        for node in nodes:
+            for edge in node.get_edges():
+                if distance[node] + edge.weight < distance[edge.n2]:
+                    distance[edge.n2] = distance[node] + edge.weight
+                    previous[edge.n2] = node
+
+        path = []
+        curr = dest
+        while curr is not start:
+            path.append(curr)
+            curr = previous[curr]
+        path.append(start)
+        return path[::-1]
+
 
 if __name__ == '__main__':
     from random import randint
@@ -178,3 +201,4 @@ if __name__ == '__main__':
         g.add_edge(nodes[n1], nodes[n2], w)
 
     print g.dijkstra(nodes[2], nodes[6])
+    print g.bellamford(nodes[2], nodes[6])
