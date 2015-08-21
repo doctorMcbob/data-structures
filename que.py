@@ -1,5 +1,6 @@
 from linked_list import Node
 
+
 class Queue(object):
     def __init__(self):
         self._size = 0
