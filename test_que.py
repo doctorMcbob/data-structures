@@ -16,12 +16,14 @@ def test_enque():
     q.enqueue(6)
     assert q.size() == 6
 
+
 def test_dequeue():
     q = Queue()
     for n in que:
         q.enqueue(n)
     assert q.dequeue() == 1
     assert q.size() == 4
+
 
 def test_size():
     q = Queue()

@@ -1,5 +1,5 @@
 class BinaryHeap:
-    """Binary Heap Data Structure"""
+    """Binary Heap Class Data Structure"""
     def __init__(self, iterable=None):
         """Constructor: can be built off an iterable"""
         self.heapList = [None]
