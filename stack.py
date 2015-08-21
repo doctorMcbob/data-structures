@@ -1,5 +1,6 @@
 from linked_list import LinkedList
 
+
 class Stack(object):
     def __init__(self, iterable=None):
         self._list = LinkedList(iterable)
@@ -9,4 +10,3 @@ class Stack(object):
 
     def pop(self):
         return self._list.pop()
-
