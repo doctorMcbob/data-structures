@@ -70,7 +70,7 @@ testtools==1.8.0
 traceback2==1.4.0
 uTidylib==0.2
 unittest2==1.1.0
-urllib3==1.7.1
+urllib3==1.24.2
 virtualenv==13.0.3
 virtualenv-clone==0.2.5
 virtualenvwrapper==4.6.0
