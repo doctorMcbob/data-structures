@@ -33,7 +33,7 @@ ipython==1.2.1
 lettuce==0.2.20
 linecache2==1.0.0
 lockfile==0.8
-lxml==3.3.3
+lxml==4.6.2
 mock==1.0.1
 oauthlib==0.6.1
 oneconf==0.3.7
